@@ -32,21 +32,33 @@
           label(for='find-employee-name') Name
           input#rrn.form-control(type='text', placeholder='Need to reconfirm... fixing')
     h2 Result
-    if employees.total > 0
-      .small Total #{employees.total} employee(s)
-      table.table
-        thead
+  
+    table.table
+      
+      thead
+        tr
+          th(scope='col') #
+          th(scope='col') First
+          th(scope='col') Last
+          th(scope='col') Handle
+      tbody
+        each employee in employees
           tr
-            th(scope='col') Employee Number
-            th(scope='col') Name
-            th(scope='col') Department
-            th(scope='col') Phone Number
-        tbody
-          each employee in employees.docs //이 부분은 data넘어오는 것 보고 다시 수정하겠음.
-            tr
-              a(href='')
-                th(scope='row')= employee.employee_number
-                td= employee.name
-                td= employee.department
-                td= employee.phone_number
+            th(scope='row') #{employee.employee_number}
+            td #{employee.name}
+            td #{employee.RRN}
+            td #{employee.dept_id}
+            td #{employee.gender}
+            td #{employee.final_education}
+            td #{employee.email}
+            td #{employee.phonenumber}
+        
+        
+        
+        
+    //일단 페이지에 mysql 데이터 출력됨     
+        
+    //이 부분은 data넘어오는 것 보고 다시 수정하겠음.
+          if employees.total > 0
+      .small Total #{employees.total} employee(s)
       
